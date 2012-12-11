@@ -11,16 +11,14 @@
 #cd ..; \
 #tar -Jcf python-ecore-$PKG_VERSION.tar.xz python-ecore/ --exclude .svn --exclude .*ignore
 
-%define svnrev  65723
-
-Summary:	Ecore bindings for Python 
+Summary:	Ecore bindings for Python
 Name:		python-ecore
-Version:	0.7.3
-Release:	0.%{svnrev}.1
-Source0:	%{name}-%{version}.%{svnrev}.tar.xz
+Version:	1.7.0
+Release:	1
 License:	GPLv2
 Group:		Graphical desktop/Enlightenment
 URL:		http://www.enlightenment.org/
+Source0:	http://download.enlightenment.org/releases/BINDINGS/python/%{name}-%{version}.tar.bz2
 
 BuildRequires:	pkgconfig(ecore)
 BuildRequires:	pkgconfig(eina)
@@ -30,17 +28,17 @@ BuildRequires:	python-cython
 %py_requires -d
 
 %description
-Python support files for Ecore
+Python support files for Ecore.
 
 %package devel
-Summary:    Development files for %{name}
-Group:      Development/Python
+Summary:	Development files for %{name}
+Group:		Development/Python
 
 %description devel
 Development files for the Python wrapper for the Ecore libraries.
 
 %prep
-%setup -qn %{name}
+%setup -q
 
 %build
 NOCONFIGURE=yes ./autogen.sh
@@ -48,9 +46,7 @@ NOCONFIGURE=yes ./autogen.sh
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
-find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
 
 %files
 %doc README
@@ -61,3 +57,29 @@ find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
 %{_datadir}/%{name}/*
 %{_libdir}/pkgconfig/*.pc
 
+%changelog
+* Tue Jan 10 2012 Matthew Dawkins <mattydaw@mandriva.org> 0.7.3-0.65723.1
++ Revision: 759565
+- imported package python-ecore
+
+
+* Tue Jan 10 2012 Matthew Dawkins <mdawkins@unity-linux.org> 0.7.3-0.65723.1-unity2011
+- new version 0.7.3
+
+* Wed Aug 24 2011 Gianvacca <gianvacca@unity-linux.org> 0.7.3.60100-0.20110824.1-unity2011
+- new snapshot
+
+* Sat Mar 05 2011 OnlyHuman <halo.3.0sdt@googlemail.com> 0.0.1-0.20110305.beta3.1-unity2011
+- new version 1.0.0 beta3 svn 20110305
+
+* Fri Jan 14 2011 OnlyHuman <halo.3.0sdt@googlemail.com> 0.0.1-0.20110114.beta3.1-unity2011
+- new version 1.0.0 beta3 svn 20110114
+
+* Mon Dec 13 2010 OnlyHuman <halo.3.0sdt@googlemail.com> 0.0.1-0.20101203.beta3.1-unity2010
+- new version 1.0.0 beta3 svn 20101203
+
+* Tue Oct 12 2010 mdawkins <mattydaw@gmail.com> 0.0.1-0.20101006.1-unity2010
+- new snapshot 20101006
+
+* Thu Aug 26 2010 mdawkins <mattydaw@gmail.com> 0.0.1-0.20100825.1-unity2010
+- new version 0.0.1
