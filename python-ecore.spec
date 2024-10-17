@@ -17,7 +17,7 @@ Version:	1.7.0
 Release:	1
 License:	GPLv2
 Group:		Graphical desktop/Enlightenment
-URL:		http://www.enlightenment.org/
+URL:		https://www.enlightenment.org/
 Source0:	http://download.enlightenment.org/releases/BINDINGS/python/%{name}-%{version}.tar.bz2
 
 BuildRequires:	pkgconfig(ecore)
